@@ -201,6 +201,7 @@ jobs:
       - name: Move and zip files and generate sha256 hash
         run: |
           mkdir -p ./publish/
+          wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb -O ./publish/Country.mmdb
           install -Dp ./geoip.dat ./publish/
           install -Dp ./geoip.dat.sha256sum ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
@@ -210,13 +211,10 @@ jobs:
           install -p {proxy,direct,reject}-tld-list.txt ./publish/
           install -p {proxy,direct,reject}-list.txt ./publish/
           install -p hosts ./publish/
-          install -p {apple-cn,google-cn,gfw,win-spy,win-update,win-extra}.txt ./publish/
+          install -p apple-cn.txt ./publish/
           cd ./publish || exit 1
           zip rules.zip {proxy,direct,reject}-list.txt geoip.dat geosite.dat geosite.db geosite-v2fly.db geoip.db
-          sha256sum geosite.dat > geosite.dat.sha256sum
-          sha256sum geosite.db > geosite.db.sha256sum
-          sha256sum geoip.db > geoip.db.sha256sum
-          sha256sum rules.zip > rules.zip.sha256sum
+
 
       - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
