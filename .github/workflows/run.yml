@@ -63,7 +63,6 @@ jobs:
       - name: Get geoip.dat relative files
         run: |
           wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat
-          wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat.sha256sum
 
       - name: Generate GFWList domains
         run: |
@@ -159,12 +158,19 @@ jobs:
           curl -sSL $WIN_UPDATE | grep "0.0.0.0" | awk '{print $2}' > ./community/data/win-update
           curl -sSL $WIN_EXTRA | grep "0.0.0.0" | awk '{print $2}' > ./community/data/win-extra
 
-      - name: Add `meta` modification
+      - name: modify 'community/data'
         env:
           SED: sed '/^\s*#/d' | sed 's/DOMAIN,//g' | sed 's/DOMAIN-SUFFIX,//g' | sed 's/DOMAIN-KEYWORD,/keyword:/g'
         run: |
+          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.list | ${{ env.SED }} > steamcn.txt
+          while read line; do grep -q "$line @cn" ./community/data/steam || sed -i "/$line/ s/$/ @cn/" ./community/data/steam; done < steamcn.txt
+          cat ./community/data/steam
+
+      - name: Add `meta` data
+        env:
+          SED: sed '/^\s*#/d' | sed 's/DOMAIN,/full:/g' | sed 's/DOMAIN-SUFFIX,//g' | sed 's/DOMAIN-KEYWORD,/keyword:/g'
+        run: |
           curl -sSL https://raw.githubusercontent.com/xishang0128/rules/main/biliintl.list > ./community/data/biliintl
-          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.list | ${{ env.SED }} > ./community/data/steam-cn
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.list | ${{ env.SED }} > ./community/data/tracker
           
       - name: Build geosite.dat file

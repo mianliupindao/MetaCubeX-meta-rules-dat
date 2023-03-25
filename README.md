@@ -43,10 +43,11 @@
 ### geosite.dat,geosite.db
 
 用法同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)  
-  - `geosite:cn`类别的源替换为 [ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
+  - `geosite:cn` 源替换为 [ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
+  - `geosite:steam@cn` 类别添加 [SteamCN](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/SteamCN) 的内数据
   - 新增类别
     - `geosite:biliintl` 来源 [biliintl](https://raw.githubusercontent.com/xishang0128/rules/main/biliintl.list)
-    - `geosite:steam-cn` 来源 [SteamCN](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/SteamCN)
+
 ## 示例
 ```yaml
   - GEOSITE,category-ads-all,REJECT
@@ -87,3 +88,4 @@
 - [@PeterLowe/adservers](https://pgl.yoyo.org/adservers)
 - [@DanPollock/hosts](https://someonewhocares.org/hosts)
 - [@crazy-max/WindowsSpyBlocker](https://github.com/crazy-max/WindowsSpyBlocker)
+- [@blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)
