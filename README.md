@@ -61,7 +61,7 @@
   - GEOSITE,onedrive,DIRECT
   - GEOSITE,microsoft@cn,DIRECT
   - GEOSITE,apple-cn,DIRECT
-  - GEOSITE,steam-cn,DIRECT
+  - GEOSITE,steam@cn,DIRECT
   - GEOSITE,category-games@cn,DIRECT
   - GEOSITE,geolocation-!cn,PROXY
   - GEOSITE,cn,DIRECT
