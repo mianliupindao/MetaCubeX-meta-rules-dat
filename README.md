@@ -26,7 +26,15 @@
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.db)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.db)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.db)
-
+- **rule-set**
+  - **cn_domain.yaml**
+    - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml)
+    - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn_domain.yaml)
+    - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn_domain.yaml)
+  - **proxy.yaml**
+    - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml)
+    - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/proxy.yaml)
+    - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/proxy.yaml)
 ### country.mmdb,geoip.dat,geoip.db
 
 同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)
@@ -51,8 +59,18 @@
 /
 ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/PrivateTracker)
 
-## 示例
+### 示例
 ```yaml
+rule-providers:
+  cn:
+    behavior: domain
+    interval: 86400
+    path: ./provider/rule-set/cn_domain.yaml
+    type: http
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn_domain.yaml"
+
+rules:
+  - RULE-SET,rule1,REJECT
   - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
   - GEOSITE,youtube,PROXY
@@ -77,6 +95,7 @@ ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rul
   - DST-PORT,80/8080/443/8443,PROXY
   - MATCH,DIRECT
 ```
+
 ## 致谢
 
 - [@Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)
