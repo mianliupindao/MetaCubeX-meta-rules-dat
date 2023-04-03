@@ -72,7 +72,7 @@ jobs:
 
       - name: Get and add direct domains into temp-direct.txt file
         run: |
-          curl -sSL ${CHINA_DOMAINS_URL} | sed '/^[^\.]/d' | sed '/^\s*#/d' | sed 's/^\.\([^\.]*\)\./\1\./g' > temp-direct.txt 
+          curl -sSL ${CHINA_DOMAINS_URL} | sed '/^\s*#/d' | sed '/^[^\.]/ s/^/full: /' |  sed 's/^\.\([^.]*\)/\1/' > temp-direct.txt 
           curl -sSL ${CUSTOM_DIRECT} | perl -ne '/^(domain):([^:]+)(\n$|:@.+)/ && print "$2\n"' >> temp-direct.txt
 
       - name: Get and add proxy domains into temp-proxy.txt file
@@ -220,6 +220,8 @@ jobs:
           install -Dp ./custom/publish/geosite.dat ./publish/
           install -Dp ./sing-geosite/geosite.db ./publish/
           install -Dp ./sing-geoip/geoip.db ./publish/
+          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml | sed '/^\s*#/d' > ./publish/cn_domain.yaml
+          curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           cd ./publish || exit 1
 
 
