@@ -158,7 +158,7 @@ jobs:
           curl -sSL $WIN_UPDATE | grep "0.0.0.0" | awk '{print $2}' > ./community/data/win-update
           curl -sSL $WIN_EXTRA | grep "0.0.0.0" | awk '{print $2}' > ./community/data/win-extra
 
-      - name: modify 'community/data'
+      - name: merge 'ios_rule_script/SteamCN'
         env:
           SED: sed '/^\s*#/d' | sed 's/DOMAIN,//g' | sed 's/DOMAIN-SUFFIX,//g' | sed 's/DOMAIN-KEYWORD,/keyword:/g'
         run: |

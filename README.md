@@ -51,9 +51,9 @@
 ### geosite.dat,geosite.db
 
 用法同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)  
-  - `geosite:cn` 源替换为 [ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
-  - `geosite:onedrive` 源替换为 [ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Onedrive)
-  - `geosite:steam@cn` 类别添加 [SteamCN](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/SteamCN) 的内数据
+  - `geosite:cn` 源替换为 [ios_rule_script/ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
+  - `geosite:onedrive` 合并 [ios_rule_script/OneDrive](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/OneDrive)
+  - `geosite:steam@cn` 合并 [ios_rule_script/SteamCN](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/SteamCN) 的内数据
   - 新增类别
     - `geosite:biliintl` 来源 [biliintl](https://raw.githubusercontent.com/xishang0128/rules/main/biliintl.list)
     - `geosite:tracker` 来源 [TrackersList](https://trackerslist.com/#/zh)以及[blackmatrix7
@@ -71,7 +71,7 @@ rule-providers:
     url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn_domain.yaml"
 
 rules:
-  - RULE-SET,rule1,REJECT
+  - RULE-SET,cn,DIRECT
   - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
   - GEOSITE,youtube,PROXY
