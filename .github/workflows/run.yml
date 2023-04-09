@@ -62,7 +62,7 @@ jobs:
 
       - name: Get geoip.dat relative files
         run: |
-          wget https://github.com/xishang0128/geoip/raw/release/geoip.dat
+          wget -O cn.dat https://github.com/xishang0128/geoip/raw/release/geoip.dat
 
       - name: Generate GFWList domains
         run: |
@@ -211,15 +211,26 @@ jobs:
           cd sing-geoip || exit 1
           sed -i 's/Dreamacro\/maxmind-geoip/xishang0128\/geoip/g' main.go
           go run -v .
+          mv geoip.dat cn.dat
+          
+      - name: Build geoip.db
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-geoip || exit 1
+          sed -i 's/xishang0128\/geoip/Loyalsoldier\/geoip/g' main.go
+          go run -v .
 
       - name: Move and zip files
         run: |
           mkdir -p ./publish/
           wget https://raw.githubusercontent.com/xishang0128/geoip/release/Country.mmdb -O ./publish/country.mmdb
+          install -Dp ./cn.dat ./publish/
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
           install -Dp ./sing-geosite/geosite.db ./publish/
           install -Dp ./sing-geoip/geoip.db ./publish/
+          install -Dp ./sing-geoip/cn.db ./publish/
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml | sed '/^\s*#/d' > ./publish/cn_domain.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           cd ./publish || exit 1
