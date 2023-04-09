@@ -62,7 +62,7 @@ jobs:
 
       - name: Get geoip.dat relative files
         run: |
-          wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat
+          wget https://github.com/xishang0128/geoip/raw/release/geoip.dat
 
       - name: Generate GFWList domains
         run: |
@@ -196,7 +196,7 @@ jobs:
         run: |
           cd sing-geosite || exit 1
           sed -i 's/geosite-v2fly\.db/geosite.db/g' main.go
-          sed -i 's/v2fly\/domain-list-community/Loyalsoldier\/v2ray-rules-dat/g' main.go
+          sed -i 's/v2fly\/domain-list-community/xishang0128\/v2ray-rules-dat/g' main.go
           sed -i 's/dlc/geosite/g' main.go
           go run -v . 
 
@@ -211,13 +211,13 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geoip || exit 1
-          sed -i 's/Dreamacro\/maxmind-geoip/Loyalsoldier\/geoip/g' main.go
+          sed -i 's/Dreamacro\/maxmind-geoip/xishang0128\/geoip/g' main.go
           go run -v .
 
       - name: Move and zip files
         run: |
           mkdir -p ./publish/
-          wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb -O ./publish/country.mmdb
+          wget https://raw.githubusercontent.com/xishang0128/geoip/release/Country.mmdb -O ./publish/country.mmdb
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
           install -Dp ./sing-geosite/geosite.db ./publish/
