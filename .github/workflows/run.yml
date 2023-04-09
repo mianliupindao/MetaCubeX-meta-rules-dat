@@ -194,7 +194,7 @@ jobs:
           curl -sSL ${CHINA_DOMAINS_URL} | sed '/^\s*#/d' | sed '/^[^\.]/ s/^/full: /' |  sed 's/^\.\([^.]*\)/\1/' > cn
           curl -sSL ${CUSTOM_DIRECT} | perl -ne '/^(domain):([^:]+)(\n$|:@.+)/ && print "$2\n"' >> cn
           curl -sSL ${CUSTOM_DIRECT} | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u >> cn
-          sort ./cn | uniq -i > ./data-lite/cn | rm cn
+          sort ./cn | uniq -i > ./data-lite/cn
           go run ./ --datapath=./data-lite --outputname geosite-lite.dat
 
       - name: Checkout SagerNet/sing-geosite
