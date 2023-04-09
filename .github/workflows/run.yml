@@ -63,6 +63,7 @@ jobs:
       - name: Get geoip.dat relative files
         run: |
           wget -O cn.dat https://github.com/xishang0128/geoip/raw/release/geoip.dat
+          wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat
 
       - name: Generate GFWList domains
         run: |
