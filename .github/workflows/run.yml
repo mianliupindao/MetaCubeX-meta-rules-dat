@@ -185,9 +185,8 @@ jobs:
           cd custom || exit 1
           go run ./ --datapath=../community/data
 
-      - name: Build geosite-lite.dat file
-        env:
-          NO_SKIP: true
+
+      - name: Add `lite` data
         run: |
           cd community || exit 1
           mkdir -p data-lite
@@ -195,6 +194,12 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/Loyalsoldier/domain-list-custom/release/cn.txt | perl -ne '/^(domain):([^:]+)(\n$|:@.+)/ && print "$2\n"' >> cn
           curl -sSL https://raw.githubusercontent.com/Loyalsoldier/domain-list-custom/release/cn.txt | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u >> cn
           sort ./cn | uniq -i > data-lite/cn
+
+      - name: Build geosite-lite.dat file
+        env:
+          NO_SKIP: true
+        run: |
+          cd community || exit 1
           go run ./ --datapath=./data-lite --outputname geosite-lite.dat
 
       - name: Checkout SagerNet/sing-geosite
