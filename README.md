@@ -4,20 +4,33 @@
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb)
+  
 - **geoip.dat**
-
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat)
 
 - **geoip.db**
-
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.db)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.db)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.db)
 
-- **geosite.dat**
+- **cn.mmdb**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn.mmdb)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.mmdb)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.mmdb)
+  
+- **cn.dat**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn.dat)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.dat)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.dat)
 
+- **cn.db**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn.db)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.db)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.db)
+  
+- **geosite.dat**
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat)
@@ -26,11 +39,13 @@
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.db)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.db)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.db)
+  
 - **rule-set**
   - **cn_domain.yaml**
     - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml)
     - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn_domain.yaml)
     - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn_domain.yaml)
+    
   - **proxy.yaml**
     - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml)
     - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/proxy.yaml)
@@ -38,6 +53,19 @@
 ### country.mmdb,geoip.dat,geoip.db
 
 同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)
+- 新增类别（方便有特殊需求的用户使用）：
+  - `geoip:cloudflare`
+  - `geoip:cloudfront`
+  - `geoip:facebook`
+  - `geoip:fastly`
+  - `geoip:google`
+  - `geoip:netflix`
+  - `geoip:telegram`
+  - `geoip:twitter`
+
+### country.mmdb,geoip.dat,geoip.db
+
+国家仅包含CN,精简体积,替换一些类别
 - 新增类别（方便有特殊需求的用户使用）：
   - `geoip:cloudflare`
   - `geoip:cloudfront`
