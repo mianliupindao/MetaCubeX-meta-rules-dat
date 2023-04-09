@@ -211,7 +211,7 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          cp ../custom/publish/geosite-lite.dat ./
+          cp ../community/geosite-lite.dat ./
           go run -v . geosite-lite.dat geosite-lite.db
 
       - name: Checkout SagerNet/sing-geoip
@@ -246,7 +246,7 @@ jobs:
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
           install -Dp ./sing-geosite/geosite.db ./publish/
-          install -Dp ./custom/publish/geosite-lite.dat ./publish/
+          install -Dp ./community/geosite-lite.dat ./publish/
           install -Dp ./sing-geosite/geosite-lite.db ./publish/
           install -Dp ./sing-geoip/geoip.db ./publish/
           install -Dp ./sing-geoip/cn.db ./publish/
