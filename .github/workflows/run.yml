@@ -186,6 +186,8 @@ jobs:
           go run ./ --datapath=../community/data
 
       - name: Build geosite-lite.dat file
+        env:
+          NO_SKIP: true
         run: |
           cd community || exit 1
           mkdir -p data-lite
@@ -198,13 +200,6 @@ jobs:
           repository: SagerNet/sing-geosite
           path: sing-geosite
 
-      - name: Build geosite.db file
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geosite || exit 1
-          cp ../custom/publish/geosite.dat ./
-          go run -v . geosite.dat geosite.db
 
       - name: Build geosite-lite.db file
         env:
@@ -212,7 +207,16 @@ jobs:
         run: |
           cd sing-geosite || exit 1
           cp ../community/geosite-lite.dat ./
-          go run -v . geosite-lite.dat geosite-lite.db
+          go run -v . geosite-lite.dat geosite.db
+          mv geosite.db geosite-lite.db
+
+      - name: Build geosite.db file
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-geosite || exit 1
+          cp ../custom/publish/geosite.dat ./
+          go run -v . geosite.dat geosite.db
 
       - name: Checkout SagerNet/sing-geoip
         uses: actions/checkout@v3
