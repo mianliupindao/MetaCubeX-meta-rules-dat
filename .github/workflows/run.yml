@@ -211,7 +211,7 @@ jobs:
           cd sing-geoip || exit 1
           sed -i 's/Dreamacro\/maxmind-geoip/xishang0128\/geoip/g' main.go
           go run -v .
-          mv geoip.dat cn.dat
+          mv geoip.db cn.db
           
       - name: Build geoip.db
         env:
@@ -224,7 +224,8 @@ jobs:
       - name: Move and zip files
         run: |
           mkdir -p ./publish/
-          wget https://raw.githubusercontent.com/xishang0128/geoip/release/Country.mmdb -O ./publish/country.mmdb
+          wget https://raw.githubusercontent.com/xishang0128/geoip/release/Country.mmdb -O ./publish/cn.mmdb
+          wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb -O ./publish/country.mmdb
           install -Dp ./cn.dat ./publish/
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
