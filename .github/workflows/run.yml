@@ -62,6 +62,7 @@ jobs:
 
       - name: Get geoip.dat relative files
         run: |
+          wget -O cn.dat https://github.com/xishang0128/geoip/raw/release/geoip.dat
           wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat
 
       - name: Generate GFWList domains
@@ -195,10 +196,8 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          sed -i 's/geosite-v2fly\.db/geosite.db/g' main.go
-          sed -i 's/v2fly\/domain-list-community/Loyalsoldier\/v2ray-rules-dat/g' main.go
-          sed -i 's/dlc/geosite/g' main.go
-          go run -v . 
+          cp ../custom/publish/geosite.dat ./
+          go run -v . geosite.dat geosite.db
 
       - name: Checkout SagerNet/sing-geoip
         uses: actions/checkout@v3
@@ -211,17 +210,29 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geoip || exit 1
-          sed -i 's/Dreamacro\/maxmind-geoip/Loyalsoldier\/geoip/g' main.go
+          sed -i 's/Dreamacro\/maxmind-geoip/xishang0128\/geoip/g' main.go
+          go run -v .
+          mv geoip.db cn.db
+          
+      - name: Build geoip.db
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-geoip || exit 1
+          sed -i 's/xishang0128\/geoip/Loyalsoldier\/geoip/g' main.go
           go run -v .
 
       - name: Move and zip files
         run: |
           mkdir -p ./publish/
+          wget https://raw.githubusercontent.com/xishang0128/geoip/release/Country.mmdb -O ./publish/cn.mmdb
           wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb -O ./publish/country.mmdb
+          install -Dp ./cn.dat ./publish/
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
           install -Dp ./sing-geosite/geosite.db ./publish/
           install -Dp ./sing-geoip/geoip.db ./publish/
+          install -Dp ./sing-geoip/cn.db ./publish/
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml | sed '/^\s*#/d' > ./publish/cn_domain.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           cd ./publish || exit 1
@@ -233,6 +244,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
           deleteOnlyFromDrafts: false
+
 
       - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
