@@ -196,7 +196,7 @@ jobs:
         run: |
           cd sing-geosite || exit 1
           sed -i 's/geosite-v2fly\.db/geosite.db/g' main.go
-          sed -i 's/v2fly\/domain-list-community/xishang0128\/meta-rules-dat/g' main.go
+          sed -i 's/v2fly\/domain-list-community/Loyalsoldier\/v2ray-rules-dat/g' main.go
           sed -i 's/dlc/geosite/g' main.go
           go run -v . 
 
@@ -233,6 +233,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
           deleteOnlyFromDrafts: false
+
+      - name: Release
+        uses: softprops/action-gh-release@v0.1.6
+        with:
+          name: ${{ env.RELEASE_NAME }}
+          tag_name: ${{ env.TAG_NAME }}
+          draft: false
+          prerelease: false
+          files: |
+            ./publish/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release and upload assets
         uses: softprops/action-gh-release@v0.1.6
