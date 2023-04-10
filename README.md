@@ -64,7 +64,7 @@
   - `geoip:telegram`
   - `geoip:twitter`
 
-## **geoip-lite.mmdb,geoip-lite.dat,geoip-lite.db 内容** 
+## **country-lite.mmdb,geoip-lite.dat,geoip-lite.db 内容** 
 
 国家仅包含CN/JP,精简体积,替换一些类别
 - 新增类别（方便有特殊需求的用户使用）：
