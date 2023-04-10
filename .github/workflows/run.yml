@@ -204,15 +204,6 @@ jobs:
           path: sing-geosite
 
 
-      - name: Build geosite-lite.db file
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geosite || exit 1
-          cp ../community/geosite-lite.dat ./
-          go run -v . geosite-lite.dat geosite.db
-          mv geosite.db geosite-lite.db
-
       - name: Build geosite.db file
         env:
           NO_SKIP: true
@@ -221,6 +212,16 @@ jobs:
           sed -i 's/geosite-v2fly\.db/geosite.db/g' main.go
           sed -i 's/v2fly\/domain-list-community/xishang0128\/meta-rules-dat/g' main.go
           sed -i 's/dlc/geosite/g' main.go
+          go run -v .
+
+      - name: Build geosite-lite.db file
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-geosite || exit 1
+          sed -i 's/geosite-v2fly\.db/geosite.db/g' main.go
+          sed -i 's/v2fly\/domain-list-community/xishang0128\/meta-rules-dat/g' main.go
+          sed -i 's/dlc/geosite-lite/g' main.go
           go run -v .
 
       - name: Checkout SagerNet/sing-geoip
