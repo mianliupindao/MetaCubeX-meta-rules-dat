@@ -51,7 +51,7 @@
     - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/proxy.yaml)
     - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/proxy.yaml)
     
-## **country.mmdb,geoip.dat,geoip.db**
+## **country.mmdb,geoip.dat,geoip.db 内容**
 
 同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)
 - 新增类别（方便有特殊需求的用户使用）：
@@ -64,7 +64,7 @@
   - `geoip:telegram`
   - `geoip:twitter`
 
-## **cn.mmdb,cn.dat,cn.db**
+## **cn.mmdb,cn.dat,cn.db 内容** 
 
 国家仅包含CN,精简体积,替换一些类别
 - 新增类别（方便有特殊需求的用户使用）：
@@ -77,9 +77,10 @@
   - `geoip:telegram`
   - `geoip:twitter`
 
-## **geosite.dat,geosite.db**
+## **geosite.dat,geosite.db 内容**
 
 用法同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)  
+  - `geosite:category-ads-all` 仅使用域名作为广告拦截用途作用有限，因此不作额外域名添加
   - `geosite:cn` 源替换为 [ios_rule_script/ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
   - `geosite:onedrive` 合并 [ios_rule_script/OneDrive](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/OneDrive)
   - `geosite:steam@cn` 合并 [ios_rule_script/SteamCN](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/SteamCN) 的内数据
