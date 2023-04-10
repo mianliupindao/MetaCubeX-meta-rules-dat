@@ -63,7 +63,7 @@
   - `geoip:telegram`
   - `geoip:twitter`
 
-### country.mmdb,geoip.dat,geoip.db
+### cn.mmdb,cn.dat,cn.db
 
 国家仅包含CN,精简体积,替换一些类别
 - 新增类别（方便有特殊需求的用户使用）：
