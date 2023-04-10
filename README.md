@@ -39,7 +39,17 @@
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.db)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.db)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.db)
-  
+
+- **geosite-lite.dat**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite-lite.dat)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite-lite.dat)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite-lite.dat)
+
+- **geosite-lite.db**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite-lite.db)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite-lite.db)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite-lite.db)
+
 - **rule-set**
   - **cn_domain.yaml**
     - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn_domain.yaml)
@@ -89,6 +99,17 @@
     - `geosite:tracker` 来源 [TrackersList](https://trackerslist.com/#/zh)以及[blackmatrix7
 /
 ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/PrivateTracker)
+
+
+## **geosite.dat,geosite.db 内容**
+
+仅包含常用集合
+  - `geosite:cn` 源替换为 [ios_rule_script/ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
+  - `geosite:biliintl` 来源 [biliintl](https://raw.githubusercontent.com/xishang0128/rules/main/biliintl.list)
+  - `geosite:tracker` 来源 [TrackersList](https://trackerslist.com/#/zh)以及[blackmatrix7
+/
+ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/PrivateTracker)
+
 
 ## **示例**
 ```yaml
