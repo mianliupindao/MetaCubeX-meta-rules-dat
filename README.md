@@ -101,7 +101,7 @@
 ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/PrivateTracker)
 
 
-## **geosite.dat,geosite.db 内容**
+## **geosite-lite.dat,geosite-lite.db 内容**
 
 仅包含常用集合
   - `geosite:cn` 源替换为 [ios_rule_script/ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
