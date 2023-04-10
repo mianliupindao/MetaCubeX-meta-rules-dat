@@ -197,53 +197,23 @@ jobs:
           sort ./cn | uniq -i > data-lite/cn
           go run ./ --datapath=./data-lite --outputname geosite-lite.dat
 
-      - name: Checkout SagerNet/sing-geosite
-        uses: actions/checkout@v3
-        with:
-          repository: SagerNet/sing-geosite
-          path: sing-geosite
 
-      - name: Build geosite-lite.db file
+
+
+      - name: Build db file
         env:
           NO_SKIP: true
         run: |
-          cd sing-geosite || exit 1
-          sed -i 's/geosite\.db/geosite-lite.db/g' main.go
-          sed -i 's/v2fly\/domain-list-community/xishang0128\/meta-rules-dat/g' main.go
-          sed -i 's/dlc/geosite-lite/g' main.go
-          go run -v .
+          mkdir -p v2box
+          cd v2box || exit 1
+          wget https://github.com/xishang0128/meta-rules-dat/releases/download/v2box/v2box
+          chmod 755 v2box
+          ./v2box migrate geosite -i ../custom/publish/geosite.dat -o ./geosite.db
+          ./v2box migrate geosite -i ../community/geosite-lite.dat -o ./geosite-lite.db
+          ./v2box migrate geoip -i ../geoip.dat -o ./geoip.db
+          ./v2box migrate geoip -i ../geoip-lite.dat -o ./geoip-lite.db
 
-      - name: Build geosite.db file
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geosite || exit 1
-          sed -i 's/geosite-lite\.db/geosite.db/g' main.go
-          sed -i 's/geosite-lite/geosite/g' main.go
-          go run -v .
 
-      - name: Checkout SagerNet/sing-geoip
-        uses: actions/checkout@v3
-        with:
-          repository: SagerNet/sing-geoip
-          path: sing-geoip
-
-      - name: Build geoip-lite.db file
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geoip || exit 1
-          sed -i 's/Dreamacro\/maxmind-geoip/xishang0128\/geoip/g' main.go
-          go run -v .
-          mv geoip.db geoip-lite.db
-          
-      - name: Build geoip.db
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geoip || exit 1
-          sed -i 's/xishang0128\/geoip/Loyalsoldier\/geoip/g' main.go
-          go run -v .
 
       - name: Move and zip files
         run: |
@@ -253,16 +223,15 @@ jobs:
           install -Dp ./geoip-lite.dat ./publish/
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
-          install -Dp ./sing-geosite/geosite.db ./publish/
           install -Dp ./community/geosite-lite.dat ./publish/
-          install -Dp ./sing-geosite/geosite-lite.db ./publish/
-          install -Dp ./sing-geoip/geoip.db ./publish/
-          install -Dp ./sing-geoip/geoip-lite.db ./publish/
+
+          install -Dp ./v2box/geosite.db ./publish/
+          install -Dp ./v2box/geosite-lite.db ./publish/
+          install -Dp ./v2box/geoip.db ./publish/
+          install -Dp ./v2box/geoip-lite.db ./publish/
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml | sed '/^\s*#/d' > ./publish/cn_domain.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           cd ./publish || exit 1
-          sha256sum geosite.dat > geosite.dat.sha256sum
-          sha256sum geosite-lite.dat > geosite-lite.dat.sha256sum
 
 
       - name: Delete current release assets
