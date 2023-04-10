@@ -218,8 +218,8 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          sed -i 's/v2fly\/domain-list-community/xishang0128\/meta-rules-dat/g' main.go
-          sed -i 's/dlc/geosite/g' main.go
+          sed -i 's/geosite-lite\.db/geosite.db/g' main.go
+          sed -i 's/geosite-lite/geosite/g' main.go
           go run -v .
 
       - name: Checkout SagerNet/sing-geoip
