@@ -103,7 +103,7 @@ ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rul
 
 ## **geosite-lite.dat,geosite-lite.db 内容**
 
-仅包含常用集合
+仅包含常用集合,不包含cn(太大了,感觉不lite)
   - `geosite:cn` 源替换为 [ios_rule_script/ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
   - `geosite:biliintl` 来源 [biliintl](https://raw.githubusercontent.com/xishang0128/rules/main/biliintl.list)
   - `geosite:tracker` 来源 [TrackersList](https://trackerslist.com/#/zh)以及[blackmatrix7
