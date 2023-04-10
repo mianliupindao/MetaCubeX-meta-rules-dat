@@ -197,50 +197,23 @@ jobs:
           sort ./cn | uniq -i > data-lite/cn
           go run ./ --datapath=./data-lite --outputname geosite-lite.dat
 
-      - name: Checkout CHIZI-0618/sing-geosite
-        uses: actions/checkout@v3
-        with:
-          repository: CHIZI-0618/sing-geosite
-          path: sing-geosite
 
-      - name: Build geosite-lite.db file
+
+
+      - name: Build db file
         env:
           NO_SKIP: true
         run: |
-          cd sing-geosite || exit 1
-          cp ../community/geosite-lite.dat ./
-          go run -v . geosite-lite.dat geosite-lite.db
+          mkdir -p v2box
+          cd v2box || exit 1
+          wget https://github.com/xishang0128/meta-rules-dat/releases/download/v2box/v2box
+          chmod 755 v2box
+          ./v2box migrate geosite -i ../custom/publish/geosite.dat ./geosite.db
+          ./v2box migrate geosite -i ../community/geosite-lite.dat ./geosite-lite.db
+          ./v2box migrate geoip -i ../geoip.dat ./geoip.db
+          ./v2box migrate geoip -i ../geoip-lite.dat ./gepip-lite.db
 
-      - name: Build geosite.db file
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geosite || exit 1
-          cp ../custom/publish/geosite.dat ./
-          go run -v . geosite.dat geosite.db
 
-      - name: Checkout SagerNet/sing-geoip
-        uses: actions/checkout@v3
-        with:
-          repository: SagerNet/sing-geoip
-          path: sing-geoip
-
-      - name: Build geoip-lite.db file
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geoip || exit 1
-          sed -i 's/Dreamacro\/maxmind-geoip/xishang0128\/geoip/g' main.go
-          go run -v .
-          mv geoip.db geoip-lite.db
-          
-      - name: Build geoip.db
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geoip || exit 1
-          sed -i 's/xishang0128\/geoip/Loyalsoldier\/geoip/g' main.go
-          go run -v .
 
       - name: Move and zip files
         run: |
