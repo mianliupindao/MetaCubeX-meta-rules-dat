@@ -105,7 +105,7 @@ ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rul
 
 仅包含常用集合,不包含cn(太大了,感觉不lite)
 
-集合baohan `abema / apple / applemusic / bilibili / biliintl / bahamut / ehentai / google / github`
+集合包含 `abema / apple / applemusic / bilibili / biliintl / bahamut / ehentai / google / github / microsoft / netflix / openai / onedrive / pixiv / telegram / twitter / tiktok / youtube`
 
 
 ## **示例**
