@@ -50,7 +50,8 @@
     - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/proxy.yaml)
     - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/proxy.yaml)
     - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/proxy.yaml)
-### country.mmdb,geoip.dat,geoip.db
+    
+## **country.mmdb,geoip.dat,geoip.db**
 
 同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)
 - 新增类别（方便有特殊需求的用户使用）：
@@ -63,7 +64,7 @@
   - `geoip:telegram`
   - `geoip:twitter`
 
-### cn.mmdb,cn.dat,cn.db
+## **cn.mmdb,cn.dat,cn.db**
 
 国家仅包含CN,精简体积,替换一些类别
 - 新增类别（方便有特殊需求的用户使用）：
@@ -76,7 +77,7 @@
   - `geoip:telegram`
   - `geoip:twitter`
 
-### geosite.dat,geosite.db
+## **geosite.dat,geosite.db**
 
 用法同 [Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)  
   - `geosite:cn` 源替换为 [ios_rule_script/ChinaMax_Domain](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/ChinaMax)
