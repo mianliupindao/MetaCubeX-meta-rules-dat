@@ -208,7 +208,7 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          cp ../custom/publish/geosite-lite.dat ./
+          cp ../community/geosite-lite.dat ./
           go run -v . geosite-lite.dat geosite-lite.db
 
       - name: Build geosite.db file
