@@ -248,7 +248,7 @@ jobs:
       - name: Move and zip files
         run: |
           mkdir -p ./publish/
-          wget https://raw.githubusercontent.com/xishang0128/geoip/release/Country.mmdb -O ./publish/cn.mmdb
+          wget https://raw.githubusercontent.com/xishang0128/geoip/release/Country.mmdb -O ./publish/country-lite.mmdb
           wget https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb -O ./publish/country.mmdb
           install -Dp ./geoip-lite.dat ./publish/
           install -Dp ./geoip.dat ./publish/
