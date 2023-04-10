@@ -203,24 +203,23 @@ jobs:
           repository: SagerNet/sing-geosite
           path: sing-geosite
 
-
       - name: Build geosite-lite.db file
         env:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          cp ../community/geosite-lite.dat ./
-          go run -v . geosite-lite.dat geosite.db
-          mv geosite.db geosite-lite.db
+          sed -i 's/geosite\.db/geosite-lite.db/g' main.go
+          sed -i 's/v2fly\/domain-list-community/xishang0128\/meta-rules-dat/g' main.go
+          sed -i 's/dlc/geosite-lite/g' main.go
+          go run -v .
 
       - name: Build geosite.db file
         env:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          sed -i 's/geosite-v2fly\.db/geosite.db/g' main.go
-          sed -i 's/v2fly\/domain-list-community/xishang0128\/meta-rules-dat/g' main.go
-          sed -i 's/dlc/geosite/g' main.go
+          sed -i 's/geosite-lite\.db/geosite.db/g' main.go
+          sed -i 's/geosite-lite/geosite/g' main.go
           go run -v .
 
       - name: Checkout SagerNet/sing-geoip
@@ -263,7 +262,7 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           cd ./publish || exit 1
           sha256sum geosite.dat > geosite.dat.sha256sum
-          sha256sum geosite-lite.dat > geositelite.dat.sha256sum
+          sha256sum geosite-lite.dat > geosite-lite.dat.sha256sum
 
 
       - name: Delete current release assets
