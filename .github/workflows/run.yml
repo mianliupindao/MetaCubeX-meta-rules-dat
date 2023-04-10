@@ -197,10 +197,10 @@ jobs:
           sort ./cn | uniq -i > data-lite/cn
           go run ./ --datapath=./data-lite --outputname geosite-lite.dat
 
-      - name: Checkout SagerNet/sing-geosite
+      - name: Checkout CHIZI-0618/sing-geosite
         uses: actions/checkout@v3
         with:
-          repository: SagerNet/sing-geosite
+          repository: CHIZI-0618/sing-geosite
           path: sing-geosite
 
       - name: Build geosite-lite.db file
@@ -208,19 +208,16 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          sed -i 's/geosite\.db/geosite-lite.db/g' main.go
-          sed -i 's/v2fly\/domain-list-community/xishang0128\/meta-rules-dat/g' main.go
-          sed -i 's/dlc/geosite-lite/g' main.go
-          go run -v .
+          cp ../custom/publish/geosite-lite.dat ./
+          go run -v . geosite-lite.dat geosite-lite.db
 
       - name: Build geosite.db file
         env:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          sed -i 's/geosite-lite\.db/geosite.db/g' main.go
-          sed -i 's/geosite-lite/geosite/g' main.go
-          go run -v .
+          cp ../custom/publish/geosite.dat ./
+          go run -v . geosite.dat geosite.db
 
       - name: Checkout SagerNet/sing-geoip
         uses: actions/checkout@v3
