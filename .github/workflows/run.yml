@@ -219,7 +219,7 @@ jobs:
         run: |
           cd sing-geosite || exit 1
           sed -i 's/geosite-v2fly\.db/geosite.db/g' main.go
-          sed -i 's/v2fly\/domain-list-community/Loyalsoldier\/v2ray-rules-dat/g' main.go
+          sed -i 's/v2fly\/domain-list-community/xishang\/v2ray-rules-dat/g' main.go
           sed -i 's/dlc/geosite/g' main.go
           go run -v .
 
@@ -263,6 +263,7 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           cd ./publish || exit 1
           sha256sum geosite.dat > geosite.dat.sha256sum
+          sha256sum geosite-lite.dat > geositelite.dat.sha256sum
 
 
       - name: Delete current release assets
