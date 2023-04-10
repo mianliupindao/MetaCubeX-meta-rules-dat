@@ -15,10 +15,10 @@
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.db)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.db)
 
-- **geoip-lite.mmdb**
-  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.mmdb)
-  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.mmdb)
-  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.mmdb)
+- **country-lite.mmdb**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country-lite.mmdb)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country-lite.mmdb)
   
 - **geoip-lite.dat**
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat)
