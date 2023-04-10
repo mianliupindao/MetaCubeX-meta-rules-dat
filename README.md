@@ -103,7 +103,7 @@ ios_rule_script](https://github.com/blackmatrix7/ios_rule_script/tree/master/rul
 
 ## **geosite-lite.dat,geosite-lite.db 内容**
 
-仅包含常用集合,不包含cn(太大了,感觉不lite)
+仅包含常用集合,不包含cn(太大了,感觉不lite)(没需求就别用)
 
 集合包含 `abema / apple / applemusic / bilibili / biliintl / bahamut / ehentai / google / github / microsoft / netflix / openai / onedrive / pixiv / telegram / twitter / tiktok / youtube`
 
