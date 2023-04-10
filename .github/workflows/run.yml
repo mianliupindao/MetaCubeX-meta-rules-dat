@@ -208,10 +208,10 @@ jobs:
           cd v2box || exit 1
           wget https://github.com/xishang0128/meta-rules-dat/releases/download/v2box/v2box
           chmod 755 v2box
-          ./v2box migrate geosite -i ../custom/publish/geosite.dat ./geosite.db
-          ./v2box migrate geosite -i ../community/geosite-lite.dat ./geosite-lite.db
-          ./v2box migrate geoip -i ../geoip.dat ./geoip.db
-          ./v2box migrate geoip -i ../geoip-lite.dat ./gepip-lite.db
+          ./v2box migrate geosite -i ../custom/publish/geosite.dat -o ./geosite.db
+          ./v2box migrate geosite -i ../community/geosite-lite.dat -o ./geosite-lite.db
+          ./v2box migrate geoip -i ../geoip.dat -o ./geoip.db
+          ./v2box migrate geoip -i ../geoip-lite.dat -o ./gepip-lite.db
 
 
 
@@ -232,8 +232,6 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml | sed '/^\s*#/d' > ./publish/cn_domain.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           cd ./publish || exit 1
-          sha256sum geosite.dat > geosite.dat.sha256sum
-          sha256sum geosite-lite.dat > geosite-lite.dat.sha256sum
 
 
       - name: Delete current release assets
