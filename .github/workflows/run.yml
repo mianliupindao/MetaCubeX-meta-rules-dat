@@ -218,8 +218,10 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-geosite || exit 1
-          cp ../custom/publish/geosite.dat ./
-          go run -v . geosite.dat geosite.db
+          sed -i 's/geosite-v2fly\.db/geosite.db/g' main.go
+          sed -i 's/v2fly\/domain-list-community/Loyalsoldier\/v2ray-rules-dat/g' main.go
+          sed -i 's/dlc/geosite/g' main.go
+          go run -v .
 
       - name: Checkout SagerNet/sing-geoip
         uses: actions/checkout@v3
