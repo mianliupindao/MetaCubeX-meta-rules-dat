@@ -15,20 +15,20 @@
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.db)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.db)
 
-- **cn.mmdb**
-  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn.mmdb)
-  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.mmdb)
-  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.mmdb)
+- **geoip-lite.mmdb**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.mmdb)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.mmdb)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.mmdb)
   
-- **cn.dat**
-  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn.dat)
-  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.dat)
-  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.dat)
+- **geoip-lite.dat**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.dat)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.dat)
 
-- **cn.db**
-  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/cn.db)
-  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.db)
-  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/cn.db)
+- **geoip-lite.db**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.db)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.db)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.db)
   
 - **geosite.dat**
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat)
@@ -64,9 +64,9 @@
   - `geoip:telegram`
   - `geoip:twitter`
 
-## **cn.mmdb,cn.dat,cn.db 内容** 
+## **geoip-lite.mmdb,geoip-lite.dat,geoip-lite.db 内容** 
 
-国家仅包含CN,精简体积,替换一些类别
+国家仅包含CN/JP,精简体积,替换一些类别
 - 新增类别（方便有特殊需求的用户使用）：
   - `geoip:cloudflare`
   - `geoip:cloudfront`
