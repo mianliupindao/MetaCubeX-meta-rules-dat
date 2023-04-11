@@ -210,6 +210,8 @@ jobs:
           curl -sSL https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Pixiv/Pixiv.yaml | ${{ env.SED }} > ./data-lite/pixiv
           curl -sSL https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/ProxyLite/ProxyLite.yaml | ${{ env.SED }} > ./data-lite/proxy
 
+          curl -sSL https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Spotify/Spotify.yaml | ${{ env.SED }} > ./data-lite/spotify
+
           curl -sSL https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Telegram/Telegram.yaml | ${{ env.SED }} > ./data-lite/telegram
           curl -sSL https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Twitter/Twitter.yaml | ${{ env.SED }} > ./data-lite/twitter
           curl -sSL https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/TikTok/TikTok.yaml | ${{ env.SED }} > ./data-lite/tiktok
