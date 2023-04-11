@@ -86,6 +86,7 @@
   - `geoip:netflix`
   - `geoip:telegram`
   - `geoip:twitter`
+  - `geoip:apple`
 
 ## **geosite.dat,geosite.db 内容**
 
