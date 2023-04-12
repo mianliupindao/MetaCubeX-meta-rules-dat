@@ -183,7 +183,7 @@ jobs:
           NO_SKIP: true
           SED: grep DOMAIN | grep -v "#" | sed 's/  - DOMAIN,/full:/g' | sed 's/  - DOMAIN-SUFFIX,//g' | sed 's/  - DOMAIN-KEYWORD,/keyword:/g'
         run: |
-          cd community || exit 1
+          cd custom || exit 1
           mkdir -p data-lite
           curl -sSL https://raw.githubusercontent.com/xishang0128/rules/main/biliintl.list > ./data-lite/biliintl
           curl -sSL https://github.com/v2fly/domain-list-community/raw/master/data/ehentai > ./data-lite/ehentai
@@ -221,6 +221,8 @@ jobs:
           echo include:google >> ./data-lite/proxy && echo include:github >> ./data-lite/proxy && echo include:netflix >> ./data-lite/proxy
           echo ipleak.net >> ./data-lite/proxy && echo browserleaks.org >> ./data-lite/proxy
 
+
+          sed -i 's/data\"/data-list\"/g' main.go && sed -i 's/geosite.dat/geosite-lite.dat/g' main.go
           go run ./ --datapath=./data-lite --outputname geosite-lite.dat
 
       - name: Get geoip.dat relative files
