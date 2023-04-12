@@ -226,10 +226,9 @@ jobs:
           wget https://github.com/xishang0128/meta-rules-dat/releases/download/v2box/v2box
           chmod 755 v2box
           ./v2box migrate geosite -i ../custom/publish/geosite.dat -o ./geosite.db
-          ./v2box migrate geosite -i ../custom/publish//geosite-lite.dat -o ./geosite-lite.db
+          ./v2box migrate geosite -i ../community/geosite-lite.dat -o ./geosite-lite.db
           ./v2box migrate geoip -i ../geoip.dat -o ./geoip.db
           ./v2box migrate geoip -i ../geoip-lite.dat -o ./geoip-lite.db
-
       - name: Move and zip files
         run: |
           mkdir -p ./publish/
@@ -238,8 +237,7 @@ jobs:
           install -Dp ./geoip-lite.dat ./publish/
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
-          install -Dp ./custom/publish/geosite-lite.dat ./publish/
-
+          install -Dp ./community/geosite-lite.dat ./publish/
           install -Dp ./v2box/geosite.db ./publish/
           install -Dp ./v2box/geosite-lite.db ./publish/
           install -Dp ./v2box/geoip.db ./publish/
