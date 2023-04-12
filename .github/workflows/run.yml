@@ -223,7 +223,7 @@ jobs:
 
 
           sed -i 's/data\"/data-list\"/g' main.go && sed -i 's/geosite.dat/geosite-lite.dat/g' main.go
-          go run ./ --datapath=./data-lite --outputname geosite-lite.dat
+          go run ./ --datapath=./data-lite
 
       - name: Get geoip.dat relative files
         run: |
@@ -239,7 +239,7 @@ jobs:
           wget https://github.com/xishang0128/meta-rules-dat/releases/download/v2box/v2box
           chmod 755 v2box
           ./v2box migrate geosite -i ../custom/publish/geosite.dat -o ./geosite.db
-          ./v2box migrate geosite -i ../community/geosite-lite.dat -o ./geosite-lite.db
+          ./v2box migrate geosite -i ../custom/publish//geosite-lite.dat -o ./geosite-lite.db
           ./v2box migrate geoip -i ../geoip.dat -o ./geoip.db
           ./v2box migrate geoip -i ../geoip-lite.dat -o ./geoip-lite.db
 
@@ -251,7 +251,7 @@ jobs:
           install -Dp ./geoip-lite.dat ./publish/
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
-          install -Dp ./community/geosite-lite.dat ./publish/
+          install -Dp ./custom/publish/geosite-lite.dat ./publish/
 
           install -Dp ./v2box/geosite.db ./publish/
           install -Dp ./v2box/geosite-lite.db ./publish/
