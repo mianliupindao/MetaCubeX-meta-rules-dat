@@ -176,6 +176,7 @@ jobs:
       - name: Build geosite.dat file
         run: |
           cd custom || exit 1
+          # echo sentry.io >>  ../community/data/openai
           go run ./ --datapath=../community/data
 
       - name: Build geosite-lite.dat file
@@ -212,6 +213,7 @@ jobs:
           
           echo include:google >> ./data-lite/proxy && echo include:github >> ./data-lite/proxy && echo include:netflix >> ./data-lite/proxy
           echo ipleak.net >> ./data-lite/proxy && echo browserleaks.org >> ./data-lite/proxy
+          echo sentry.io >>  ./data-lite/openai
           go run ./ --datapath=./data-lite --outputname geosite-lite.dat
 
       - name: Get geoip.dat relative files
