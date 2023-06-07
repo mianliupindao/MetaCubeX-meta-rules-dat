@@ -266,8 +266,8 @@ jobs:
       - name: Release and upload assets
         uses: softprops/action-gh-release@v1
         with:
-          name: Latest
-          tag_name: Latest
+          name: latest
+          tag_name: latest
           draft: false
           prerelease: false
           body_path: release.txt
