@@ -177,6 +177,7 @@ jobs:
         run: |
           cd custom || exit 1
           # echo sentry.io >>  ../community/data/openai
+          echo ipleak.net >> ../community/data/geolocation-\!cn && echo browserleaks.org >> ../community/data/geolocation-\!cn
           go run ./ --datapath=../community/data
 
       - name: Build geosite-lite.dat file
