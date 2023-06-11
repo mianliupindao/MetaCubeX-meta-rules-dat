@@ -232,7 +232,23 @@ jobs:
           ./v2box migrate geosite -i ../custom/publish/geosite.dat -o ./geosite.db
           ./v2box migrate geosite -i ../community/geosite-lite.dat -o ./geosite-lite.db
           ./v2box migrate geoip -i ../geoip.dat -o ./geoip.db
-          ./v2box migrate geoip -i ../geoip-lite.dat -o ./geoip-lite.db
+          # ./v2box migrate geoip -i ../geoip-lite.dat -o ./geoip-lite.db
+      
+      - name: Checkout SagerNet/sing-geoip
+        uses: actions/checkout@v3
+        with:
+          repository: SagerNet/sing-geoip
+          path: sing-geoip
+
+      - name: Build geoip.db file
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-geoip || exit 1
+          sed -i 's/Dreamacro\/maxmind-geoip/xishang0128\/geoip/g' main.go
+          go run -v .
+          mv geoip.db geoip-lite.db
+
       - name: Move and zip files
         run: |
           mkdir -p ./publish/
@@ -245,7 +261,7 @@ jobs:
           install -Dp ./v2box/geosite.db ./publish/
           install -Dp ./v2box/geosite-lite.db ./publish/
           install -Dp ./v2box/geoip.db ./publish/
-          install -Dp ./v2box/geoip-lite.db ./publish/
+          install -Dp ./sing-geoip/geoip-lite.db ./publish/
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml | sed '/^\s*#/d' > ./publish/cn_domain.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml | grep DOMAIN | grep -v "#" | sed 's/  - DOMAIN,/full:/g' | sed 's/  - DOMAIN-SUFFIX,//g' | sed 's/  - DOMAIN-KEYWORD,/keyword:/g' > ./publish/cn.txt
