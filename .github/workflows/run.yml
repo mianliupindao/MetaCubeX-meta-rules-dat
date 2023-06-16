@@ -32,9 +32,10 @@ jobs:
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
         shell: bash
 
-      - name: Checkout the "hidden" branch of this repo
+      - name: Checkout the "hidden" branch of Loyalsoldier/v2ray-rules-dat
         uses: actions/checkout@v3
         with:
+          repository: 'Loyalsoldier/v2ray-rules-dat'
           ref: hidden
 
       - name: Checkout Loyalsoldier/domain-list-custom
