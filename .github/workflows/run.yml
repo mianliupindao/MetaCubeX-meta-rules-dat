@@ -13,12 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Go
-        uses: actions/setup-go@v3
+        uses: actions/setup-go@v4
         with:
           go-version: 'stable'
 
       - name: Set variables
         run: |
+          echo "GOAMD64=v3" >> $GITHUB_ENV
           echo "RELEASE_NAME=Released on $(date +%Y%m%d%H%M)" >> $GITHUB_ENV
           echo "BUILDTIME=$(TZ=Asia/Shanghai date +"%A %B %d, %Y %H:%M")" >> $GITHUB_ENV
           echo "BUILDTIMECN=$(TZ=Asia/Shanghai date +"%Y年%m月%d日 %H时%M分")" >> $GITHUB_ENV
@@ -199,33 +200,17 @@ jobs:
           wget -O geoip-lite.dat https://github.com/xishang0128/geoip/raw/release/geoip.dat
           wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat
 
-      - name: Build db file
+      - name: Build db and metadb file
         env:
           NO_SKIP: true
         run: |
-          mkdir -p v2box
-          cd v2box || exit 1
-          wget https://github.com/xishang0128/meta-rules-dat/releases/download/v2box/v2box
-          chmod 755 v2box
-          ./v2box migrate geosite -i ../custom/publish/geosite.dat -o ./geosite.db
-          ./v2box migrate geosite -i ../community/geosite-lite.dat -o ./geosite-lite.db
-          ./v2box migrate geoip -i ../geoip.dat -o ./geoip.db
-          # ./v2box migrate geoip -i ../geoip-lite.dat -o ./geoip-lite.db
-      
-      - name: Checkout SagerNet/sing-geoip
-        uses: actions/checkout@v3
-        with:
-          repository: SagerNet/sing-geoip
-          path: sing-geoip
-
-      - name: Build geoip.db file
-        env:
-          NO_SKIP: true
-        run: |
-          cd sing-geoip || exit 1
-          sed -i 's/Dreamacro\/maxmind-geoip/xishang0128\/geoip/g' main.go
-          go run -v .
-          mv geoip.db geoip-lite.db
+          go install -trimpath -ldflags="-s -w -buildid=" github.com/metacubex/geo/cmd/geo@master
+          geo convert site -i v2ray -o sing -f geosite.db ./custom/publish/geosite.dat
+          geo convert site -i v2ray -o sing -f geosite-lite.db ./community/geosite-lite.dat
+          geo convert ip -i v2ray -o sing -f geoip.db ./geoip.dat
+          geo convert ip -i v2ray -o meta -f geoip.metadb ./geoip.dat
+          geo convert ip -i v2ray -o sing -f geoip-lite.db ./geoip-lite.dat
+          geo convert ip -i v2ray -o meta -f geoip-lite.metadb ./geoip-lite.dat
 
       - name: Move and zip files
         run: |
@@ -236,17 +221,19 @@ jobs:
           install -Dp ./geoip.dat ./publish/
           install -Dp ./custom/publish/geosite.dat ./publish/
           install -Dp ./community/geosite-lite.dat ./publish/
-          install -Dp ./v2box/geosite.db ./publish/
-          install -Dp ./v2box/geosite-lite.db ./publish/
-          install -Dp ./v2box/geoip.db ./publish/
-          install -Dp ./sing-geoip/geoip-lite.db ./publish/
+          install -Dp ./geosite.db ./publish/
+          install -Dp ./geosite-lite.db ./publish/
+          install -Dp ./geoip.db ./publish/
+          install -Dp ./geoip-lite.db ./publish/
+          install -Dp ./geoip.metadb ./publish/
+          install -Dp ./geoip-lite.metadb ./publish/
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml | sed '/^\s*#/d' > ./publish/cn_domain.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml | grep DOMAIN | grep -v "#" | sed 's/  - DOMAIN,/full:/g' | sed 's/  - DOMAIN-SUFFIX,//g' | sed 's/  - DOMAIN-KEYWORD,/keyword:/g' > ./publish/cn.txt
           cd ./publish || exit 1
 
       - name: Delete current release assets
-        uses: andreaswilli/delete-release-assets-action@v2.0.0
+        uses: andreaswilli/delete-release-assets-action@v3.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
