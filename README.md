@@ -1,7 +1,6 @@
 ## **下载地址**：
 
 ### geoX
-
 - **country.mmdb**
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb)
@@ -17,6 +16,11 @@
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.db)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.db)
 
+- **geoip.metadb**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb)
+
 - **country-lite.mmdb**
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country-lite.mmdb)
@@ -31,6 +35,11 @@
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.db)
   - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.db)
   - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.db)
+  - 
+- **geoip-lite.mmdb**
+  - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.mmdb)
+  - [JSdelivr](https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.mmdb)
+  - [JSdelivr-CF](https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip-lite.mmdb)
   
 - **geosite.dat**
   - [Github release](https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat)
