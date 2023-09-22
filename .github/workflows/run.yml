@@ -12,11 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Go
-        uses: actions/setup-go@v4
-        with:
-          go-version: 'stable'
-
       - name: Set variables
         run: |
           echo "GOAMD64=v3" >> $GITHUB_ENV
@@ -56,6 +51,17 @@ jobs:
         with:
           repository: cokebar/gfwlist2dnsmasq
           path: gfwlist2dnsmasq
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: ./custom/go.mod
+          cache-dependency-path: ./custom/go.sum
+
+      - name: Get geoip.dat relative files
+        run: |
+          wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat
+          wget https://github.com/Loyalsoldier/geoip/raw/release/geoip.dat.sha256sum
 
       - name: Generate GFWList domains
         run: |
