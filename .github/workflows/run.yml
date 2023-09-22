@@ -238,6 +238,19 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Domain.yaml | sed '/^\s*#/d' > ./publish/proxy.yaml
           curl -sSL https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml | grep DOMAIN | grep -v "#" | sed 's/  - DOMAIN,/full:/g' | sed 's/  - DOMAIN-SUFFIX,//g' | sed 's/  - DOMAIN-KEYWORD,/keyword:/g' > ./publish/cn.txt
           cd ./publish || exit 1
+          sha256sum geoip-lite.dat > geoip-lite.dat.sha256sum
+          sha256sum geoip.dat > geoip.dat.sha256sum
+          sha256sum geosite.dat > geosite.dat.sha256sum
+          sha256sum geosite-lite.dat > geosite-lite.dat.sha256sum
+          sha256sum geosite.db > geosite.db.sha256sum
+          sha256sum geosite-lite.db > geosite-lite.db.sha256sum
+          sha256sum geoip.db > geoip.db.sha256sum
+          sha256sum geoip-lite.db > geoip-lite.db.sha256sum
+          sha256sum geoip.metadb > geoip.metadb.sha256sum
+          sha256sum geoip-lite.metadb > geoip-lite.metadb.sha256sum
+
+          
+
 
       - name: Delete current release assets
         uses: andreaswilli/delete-release-assets-action@v3.0.0
