@@ -257,21 +257,29 @@ jobs:
           tag: latest
           deleteOnlyFromDrafts: false
 
-      - run: |
+      - name: Create Release Body
+        id: create_release_body
+        run: |
           cat > release.txt << 'EOF'
           Release update at  ${{ env.BUILDTIME }}
           更新时间 ${{ env.BUILDTIMECN }}
           EOF
+          r=$(cat release.txt)
+          r="${r//'%'/'%25'}"
+          r="${r//$'\n'/'%0A'}"
+          r="${r//$'\r'/'%0D'}"
+          echo "RELEASE_BODY=$r" >> $GITHUB_ENV
 
-      - name: Release and upload assets
+      - name: Create and Upload Release
+        id: upload_release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          release_name: ${{ env.RELEASE_NAME }}
+          release_name: Release ${{ env.BUILDTIME }}
           tag: latest
           file_glob: true
           file: ./publish/*
-          body: release.txt
+          body: ${{ env.RELEASE_BODY }}
 
       - name: Git push assets to "release" branch
         run: |
