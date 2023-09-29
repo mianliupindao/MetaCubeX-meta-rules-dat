@@ -271,7 +271,7 @@ jobs:
           tag: latest
           file_glob: true
           file: ./publish/*
-          body_path: release.txt
+          body: release.txt
 
       - name: Git push assets to "release" branch
         run: |
