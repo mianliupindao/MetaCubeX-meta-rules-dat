@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - master
-      - hidden
     paths-ignore:
       - "**/README.md"
 jobs:
@@ -27,11 +26,10 @@ jobs:
           echo "WIN_EXTRA=https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/extra.txt" >> $GITHUB_ENV
         shell: bash
 
-      - name: Checkout the "hidden" branch
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           repository: MetaCubeX/meta-rules-dat
-          ref: hidden
 
       - name: Checkout Loyalsoldier/domain-list-custom
         uses: actions/checkout@v3
@@ -84,11 +82,11 @@ jobs:
         run: |
           # curl -sSL ${CUSTOM_DIRECT} | grep -v google | grep -v manhua | grep -v ooklaserver | grep -v "acg.rip" | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u > direct-reserve.txt
           curl -sSL ${CUSTOM_PROXY} | grep -Ev ":@cn" | perl -ne '/^((full|regexp|keyword):[^:]+)(\n$|:@.+)/ && print "$1\n"' | sort --ignore-case -u > proxy-reserve.txt
-
+          
       - name: Add proxy, direct and reject domains from "hidden" branch to appropriate temp files
         run: |
-          cat proxy.txt >> temp-proxy.txt
-          cat direct.txt >> temp-direct.txt
+          cat ./resouces/proxy.txt >> temp-proxy.txt
+          cat ./resouces/direct.txt >> temp-direct.txt
           # cat reject.txt >> temp-reject.txt
 
       - name: Sort and generate redundant lists
@@ -99,20 +97,20 @@ jobs:
 
       - name: Remove redundant domains
         run: |
-          chmod +x *.py
-          python ./findRedundantDomain.py ./direct-list-with-redundant ./direct-list-deleted-unsort
-          python ./findRedundantDomain.py ./proxy-list-with-redundant ./proxy-list-deleted-unsort
+          chmod +x ./resouces/*.py
+          python ./resouces/findRedundantDomain.py ./direct-list-with-redundant ./direct-list-deleted-unsort
+          python ./resouces/findRedundantDomain.py ./proxy-list-with-redundant ./proxy-list-deleted-unsort
           [ ! -f "direct-list-deleted-unsort" ] && touch direct-list-deleted-unsort
           [ ! -f "proxy-list-deleted-unsort" ] && touch proxy-list-deleted-unsort
           sort ./direct-list-deleted-unsort > ./direct-list-deleted-sort
           sort ./proxy-list-deleted-unsort > ./proxy-list-deleted-sort
-          python ./removeFrom.py -remove ./direct-list-deleted-sort -from ./direct-list-with-redundant -out direct-list-without-redundant
-          python ./removeFrom.py -remove ./proxy-list-deleted-sort -from ./proxy-list-with-redundant -out proxy-list-without-redundant
+          python ./resouces/removeFrom.py -remove ./direct-list-deleted-sort -from ./direct-list-with-redundant -out direct-list-without-redundant
+          python ./resouces/removeFrom.py -remove ./proxy-list-deleted-sort -from ./proxy-list-with-redundant -out proxy-list-without-redundant
 
       - name: Remove domains from "need-to-remove" lists in "hidden" branch
         run: |
-          python ./removeFrom.py -remove ./direct-need-to-remove.txt -from ./direct-list-without-redundant -out temp-cn.txt
-          python ./removeFrom.py -remove ./proxy-need-to-remove.txt -from ./proxy-list-without-redundant -out temp-geolocation-\!cn.txt
+          python ./resouces/removeFrom.py -remove ./resouces/direct-need-to-remove.txt -from ./direct-list-without-redundant -out ./temp-cn.txt
+          python ./resouces/removeFrom.py -remove ./resouces/proxy-need-to-remove.txt -from ./proxy-list-without-redundant -out ./temp-geolocation-\!cn.txt
 
       - name: Remove domains end with ".cn" in "temp-geolocation-!cn.txt" and write lists to data directory
         run: |
