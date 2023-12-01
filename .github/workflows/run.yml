@@ -243,6 +243,29 @@ jobs:
           chmod 755 mosdns sing-box convert.sh && ./convert.sh
           rm mosdns* sing-box* convert.sh geoip.dat geosite.db LICENSE README.md config.yaml
 
+      - name: Convert geo to meta-rule-set
+        env:
+          NO_SKIP: true
+        run: |
+          mkdir -p ./meta-rule/geo
+          cp ./geoip.dat ./custom/publish/geosite.dat ./resouces/convert-clash.sh ./meta-rule/geo/ 
+          cd ./meta-rule/geo
+          wget https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip -O mosdns.zip && unzip mosdns.zip
+          chmod 755 mosdns convert-clash.sh && ./convert-clash.sh
+          rm mosdns* convert-clash.sh geoip.dat geosite.dat LICENSE README.md config.yaml
+
+
+      - name: Convert geo-lite to meta-rule-set
+        env:
+          NO_SKIP: true
+        run: |
+          mkdir -p ./meta-rule/geo-lite
+          cp ./geoip-lite.dat ./meta-rule/geo-lite/geoip.dat && cp ./community/geosite-lite.dat ./meta-rule/geo-lite/geosite.dat && cp ./resouces/convert-clash.sh ./meta-rule/geo-lite/ 
+          cd ./meta-rule/geo-lite
+          wget https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip -O mosdns.zip && unzip mosdns.zip
+          chmod 755 mosdns convert-clash.sh && ./convert-clash.sh
+          rm mosdns* convert-clash.sh geoip.dat geosite.dat LICENSE README.md config.yaml
+
       - name: Move and zip files
         run: |
           mkdir -p ./publish/
@@ -315,6 +338,20 @@ jobs:
             git commit -m "Released on ${{ env.BUILDTIME }}"
             git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
             git push -f -u origin sing
+
+      - name: Git push assets to "meta-rule" branch
+        run: |
+            cd meta-rule || exit 1
+            ls
+            git init
+            git config --local user.name "github-actions[bot]"
+            git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git checkout -b meta
+            git add .
+            git commit -m "Released on ${{ env.BUILDTIME }}"
+            git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+            git push -f -u origin meta
+
 
       - name: Purge jsdelivr CDN
         run: |
