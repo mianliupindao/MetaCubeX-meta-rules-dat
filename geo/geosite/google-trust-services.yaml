@@ -1,0 +1,7 @@
+payload:
+- "clients1.google.com"
+- "pki.google.com"
+- "+.pki.goog"
+- "crl.pki.goog"
+- "ocsp.pki.goog"
+- "pki-goog.l.google.com"
