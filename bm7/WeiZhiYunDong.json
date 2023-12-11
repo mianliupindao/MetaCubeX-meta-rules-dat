@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "dicom365.com",
+        "dycom365.com",
+        "wedcm.com",
+        "weiyunyingxiang.com",
+        "weizhiyundong.list"
+      ],
+      "domain_suffix": [
+        ".dicom365.com",
+        ".dycom365.com",
+        ".wedcm.com",
+        ".weiyunyingxiang.com"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "ai.com",
+        "algolia.net",
+        "api.statsig.com",
+        "auth0.com",
+        "cdn.cloudflare.net",
+        "challenges.cloudflare.com",
+        "client-api.arkoselabs.com",
+        "events.statsigapi.net",
+        "featuregates.org",
+        "identrust.com",
+        "intercom.io",
+        "intercomcdn.com",
+        "launchdarkly.com",
+        "oaistatic.com",
+        "oaiusercontent.com",
+        "observeit.net",
+        "poe.com",
+        "segment.io",
+        "sentry.io",
+        "stripe.com",
+        "chatgpt.livekit.cloud",
+        "static.cloudflareinsights.com"
+      ],
+      "domain_keyword": [
+        "openai"
+      ],
+      "domain_suffix": [
+        ".ai.com",
+        ".algolia.net",
+        ".api.statsig.com",
+        ".auth0.com",
+        ".cdn.cloudflare.net",
+        ".challenges.cloudflare.com",
+        ".client-api.arkoselabs.com",
+        ".events.statsigapi.net",
+        ".featuregates.org",
+        ".identrust.com",
+        ".intercom.io",
+        ".intercomcdn.com",
+        ".launchdarkly.com",
+        ".oaistatic.com",
+        ".oaiusercontent.com",
+        ".observeit.net",
+        ".poe.com",
+        ".segment.io",
+        ".sentry.io",
+        ".stripe.com"
+      ]
+    }
+  ]
+}

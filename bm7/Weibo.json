@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "weibo.cn",
+        "weibo.com",
+        "weibocdn.com"
+      ],
+      "domain_keyword": [
+        "weibo"
+      ],
+      "domain_suffix": [
+        ".weibo.cn",
+        ".weibo.com",
+        ".weibocdn.com"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "sharethis.com"
+      ],
+      "domain_suffix": [
+        ".sharethis.com"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "bard.google.com"
+      ],
+      "domain_suffix": [
+        ".bard.google.com"
+      ]
+    }
+  ]
+}

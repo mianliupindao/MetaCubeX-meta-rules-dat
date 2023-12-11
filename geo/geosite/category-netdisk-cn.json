@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "weiyun.com",
+        "yunpan.com",
+        "ctfile.com",
+        "feimaoyun.com",
+        "lanzoux.com",
+        "lanzouw.com",
+        "lanzoui.com",
+        "123pan.com",
+        "aliyundrive.com",
+        "yunpan.aliyun.com",
+        "yun.139.com",
+        "cloud.189.cn",
+        "pan.quark.cn",
+        "pan.baidu.com"
+      ],
+      "domain_suffix": [
+        ".weiyun.com",
+        ".yunpan.com",
+        ".ctfile.com",
+        ".feimaoyun.com",
+        ".lanzoux.com",
+        ".lanzouw.com",
+        ".lanzoui.com",
+        ".123pan.com",
+        ".aliyundrive.com",
+        ".yunpan.aliyun.com",
+        ".yun.139.com",
+        ".cloud.189.cn",
+        ".pan.quark.cn",
+        ".pan.baidu.com"
+      ]
+    }
+  ]
+}

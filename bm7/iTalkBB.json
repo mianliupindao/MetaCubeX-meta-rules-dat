@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "api.tv.colnv.com",
+        "italkbb.com",
+        "italkbbtv.com"
+      ],
+      "package_name": [
+        "com.italkbbtv.phone"
+      ],
+      "domain_suffix": [
+        ".api.tv.colnv.com",
+        ".italkbb.com",
+        ".italkbbtv.com"
+      ]
+    }
+  ]
+}

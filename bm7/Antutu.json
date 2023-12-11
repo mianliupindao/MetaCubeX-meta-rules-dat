@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "antutu.com"
+      ],
+      "domain_suffix": [
+        ".antutu.com"
+      ]
+    }
+  ]
+}

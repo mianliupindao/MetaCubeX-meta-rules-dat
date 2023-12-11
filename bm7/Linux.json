@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "linux.org"
+      ],
+      "domain_suffix": [
+        ".linux.org"
+      ]
+    }
+  ]
+}

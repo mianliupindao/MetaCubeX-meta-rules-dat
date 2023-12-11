@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "skyking.com.tw",
+        "hamifans.emome.net"
+      ],
+      "domain_suffix": [
+        ".skyking.com.tw"
+      ]
+    }
+  ]
+}

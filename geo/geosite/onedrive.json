@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "onedrive.com",
+        "sharepoint.cn",
+        "onedrive.co",
+        "1drv.com",
+        "sharepointonline.com",
+        "onedrive.eu",
+        "livefilestore.com",
+        "onedrive.net",
+        "onedrive.org",
+        "1drv.ms",
+        "sharepoint.com",
+        "onedrive.co.uk",
+        "spoprod-a.akamaihd.net",
+        "storage.live.com",
+        "storage.msn.com",
+        "photos.live.com",
+        "onedrive.live.com",
+        "oneclient.sfx.ms",
+        "skydrive.wns.windows.com"
+      ],
+      "domain_suffix": [
+        ".onedriveupdater",
+        ".onedrive",
+        ".onedrive.com",
+        ".sharepoint.cn",
+        ".onedrive.co",
+        ".1drv.com",
+        ".sharepointonline.com",
+        ".onedrive.eu",
+        ".livefilestore.com",
+        ".onedrive.net",
+        ".onedrive.org",
+        ".1drv.ms",
+        ".sharepoint.com",
+        ".onedrive.co.uk",
+        ".spoprod-a.akamaihd.net",
+        ".storage.live.com",
+        ".storage.msn.com",
+        ".photos.live.com",
+        ".onedrive.live.com",
+        ".oneclient.sfx.ms",
+        ".skydrive.wns.windows.com"
+      ],
+      "domain_keyword": [
+        "1drv",
+        "onedrive",
+        "skydrive"
+      ]
+    }
+  ]
+}
