@@ -254,7 +254,6 @@ jobs:
           chmod 755 mosdns convert-clash.sh && ./convert-clash.sh
           rm mosdns* convert-clash.sh geoip.dat geosite.dat LICENSE README.md config.yaml
 
-
       - name: Convert geo-lite to meta-rule-set
         env:
           NO_SKIP: true
@@ -265,6 +264,18 @@ jobs:
           wget https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip -O mosdns.zip && unzip mosdns.zip
           chmod 755 mosdns convert-clash.sh && ./convert-clash.sh
           rm mosdns* convert-clash.sh geoip.dat geosite.dat LICENSE README.md config.yaml
+
+      - name: Convert bm7-rule-set to sing-rule-set
+        env:
+          NO_SKIP: true
+        run: |
+          mkdir -p ./sing-rule/bm7
+          cp ./resouces/bm7.sh ./sing-rule/bm7/
+          cd ./sing-rule/bm7
+          wget https://github.com/SagerNet/sing-box/releases/download/v1.8.0-alpha.1/sing-box-1.8.0-alpha.1-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.0-alpha.1-linux-amd64/sing-box ./ && rm -r sing-box-1.8.0-alpha.1-linux-amd64
+          ls
+          chmod 755 bm7.sh && ./bm7.sh
+          rm -r bm7.sh sing-box*
 
       - name: Move and zip files
         run: |
