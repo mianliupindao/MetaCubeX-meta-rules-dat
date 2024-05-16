@@ -308,7 +308,7 @@ jobs:
           sha256sum geoip-lite.metadb > geoip-lite.metadb.sha256sum
 
       - name: Delete current release assets
-        uses: andreaswilli/delete-release-assets-action@v3.0.0
+        uses: andreaswilli/delete-release-assets-action@v4.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
